@@ -1,0 +1,4 @@
+{
+  "exec": "tsx",
+  "ext": "js,mjs,cjs,json,ts"
+}
