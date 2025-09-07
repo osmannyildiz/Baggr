@@ -36,6 +36,12 @@ const config: HardhatUserConfig = {
       url: configVariable("SEPOLIA_RPC_URL"),
       accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
     },
+    rise: {
+      type: "http",
+      url: "https://testnet.riselabs.xyz",
+      accounts: [configVariable("RISE_TESTNET_PRIVATE_KEY")],
+      chainId: 11155931,
+    },
   },
 };
 
