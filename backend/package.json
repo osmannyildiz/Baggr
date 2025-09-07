@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "reset-data": "rm db/baggr.db* && rm -r static && (cat db/schema.sql | sqlite3 db/baggr.db)"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "nanoid": "^5.1.5",
+    "openai": "^5.19.1",
     "tsx": "^4.20.5"
   },
   "devDependencies": {
