@@ -3,4 +3,11 @@ export interface Bag {
   name: string;
   description: string;
   imageUrl: string;
+  tokenAmounts: { amount: number; token: Token }[];
+}
+
+export interface Token {
+  id: string;
+  name: string;
+  color: string;
 }

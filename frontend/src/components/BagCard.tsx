@@ -1,3 +1,4 @@
+import { Pie } from "@nivo/pie";
 import { useState } from "react";
 import TinderCard from "react-tinder-card";
 import type { Bag } from "../types";
@@ -32,7 +33,7 @@ export function BagCard({ bag, onSwipe, onCardLeftScreen }: Props) {
 
       <div className="absolute bottom-0 z-20 flex w-full flex-col bg-linear-to-b from-transparent to-black/80 p-4 pt-12 text-white">
         {pageIndex === 0 && <BagCardSummaryPage bag={bag} />}
-        {pageIndex === 1 && <BagCardTokensPage />}
+        {pageIndex === 1 && <BagCardTokensPage bag={bag} />}
         {pageIndex === 2 && <BagCardAnalysisPage />}
 
         <div className="mt-4 flex justify-center gap-2">
@@ -48,7 +49,7 @@ export function BagCard({ bag, onSwipe, onCardLeftScreen }: Props) {
         </div>
       </div>
 
-      <div className="absolute grid h-full w-full grid-cols-2">
+      <div className="absolute z-30 grid h-full w-full grid-cols-2">
         <div
           className="pressable"
           onClick={() => setPageIndex(Math.max(pageIndex - 1, 0))}
@@ -71,8 +72,48 @@ function BagCardSummaryPage({ bag }: { bag: Bag }) {
   );
 }
 
-function BagCardTokensPage() {
-  return <div>Tokens</div>;
+function BagCardTokensPage({ bag }: { bag: Bag }) {
+  return (
+    <div className="flex justify-center">
+      <Pie
+        data={bag.tokenAmounts.map((tokenAmount) => ({
+          id: tokenAmount.token.name,
+          value: tokenAmount.amount,
+          color: tokenAmount.token.color,
+        }))}
+        valueFormat={">-~p"}
+        colors={{ datum: "data.color" }}
+        height={400}
+        width={320}
+        margin={{ bottom: 64 }}
+        enableArcLinkLabels={false}
+        legends={[
+          {
+            anchor: "bottom-left",
+            direction: "column",
+            translateY: 56,
+            itemWidth: 100,
+            itemHeight: 24,
+          },
+        ]}
+        theme={{
+          text: {
+            fill: "white",
+            outlineWidth: 1,
+            outlineColor: "black",
+            fontSize: 16,
+          },
+          legends: {
+            text: {
+              fill: "white",
+              fontSize: 14,
+            },
+          },
+        }}
+        animate
+      />
+    </div>
+  );
 }
 
 function BagCardAnalysisPage() {

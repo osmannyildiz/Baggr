@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/core": "^0.99.0",
+    "@nivo/pie": "^0.99.0",
     "@react-spring/web": "9.5.5",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-router": "^1.131.35",
