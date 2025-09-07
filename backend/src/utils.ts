@@ -14,13 +14,14 @@ export const learnToken = async (symbol: string) => {
   );
 
   const stmt1 = db.prepare(
-    "INSERT INTO tokens (id, symbol, address, description, image_url, risk_level) VALUES (?, ?, ?, ?, ?, ?)"
+    "INSERT INTO tokens (id, symbol, address, description, color, image_url, risk_level) VALUES (?, ?, ?, ?, ?, ?, ?)"
   );
   const info = stmt1.run(
     nanoid(),
     symbol,
     "0xTODO" + symbol,
     description,
+    "#000000", // TODO Get real token color
     `https://picsum.photos/seed/${symbol}/256`, // TODO Get real token image
     riskLevel
   );

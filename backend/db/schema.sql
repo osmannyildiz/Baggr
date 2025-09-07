@@ -4,6 +4,7 @@ CREATE TABLE tokens (
 	symbol					VARCHAR(255)	NOT NULL UNIQUE,
 	address					VARCHAR(255)	NOT NULL UNIQUE,
 	description				TEXT			NOT NULL,
+	color					VARCHAR(255)	NOT NULL,
 	image_url				VARCHAR(255)	NOT NULL,
 	risk_level				VARCHAR(255)	NOT NULL
 );

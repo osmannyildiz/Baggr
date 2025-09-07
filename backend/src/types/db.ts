@@ -5,6 +5,7 @@ export interface DbToken {
   address: string;
   name: string;
   description: string;
+  color: string;
   image_url: string;
   risk_level: string;
 }

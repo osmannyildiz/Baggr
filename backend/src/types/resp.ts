@@ -1,11 +1,14 @@
+import { RiskLevel } from ".";
+
 export interface RespToken {
   id: string;
   symbol: string;
   address: string;
   name: string;
   description: string;
+  color: string;
   imageUrl: string;
-  riskLevel: string;
+  riskLevel: RiskLevel;
 }
 
 export interface RespBag {

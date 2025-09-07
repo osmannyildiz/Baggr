@@ -7,7 +7,8 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "nodemon src/index.ts",
-    "reset-data": "rm db/baggr.db* && rm -r static && (cat db/schema.sql | sqlite3 db/baggr.db)"
+    "reset-data": "rm db/baggr.db* && rm -r static && (cat db/schema.sql | sqlite3 db/baggr.db)",
+    "migrate-db": "cat db/migration.sql | sqlite3 db/baggr.db"
   },
   "keywords": [],
   "author": "",

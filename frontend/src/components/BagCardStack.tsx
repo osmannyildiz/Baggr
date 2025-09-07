@@ -1,9 +1,9 @@
 import { TbDeviceUnknown } from "react-icons/tb";
-import type { Bag } from "../types";
+import type { RespBag } from "../api/bags";
 import { BagCard, type SwipeDirection } from "./BagCard";
 
 interface Props {
-  bags: Bag[];
+  bags: RespBag[];
   onSwipe: (bagId: string, direction: SwipeDirection) => void;
   onCardLeftScreen: (bagId: string, direction: SwipeDirection) => void;
 }

@@ -1,14 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { API_URL } from "../config";
+import type { RiskLevel } from "../types";
 import type { RespToken } from "./tokens";
 
-interface RespBag {
+export interface RespBag {
   id: string;
   name: string;
   description: string;
   imageUrl: string;
-  riskLevel: string;
+  riskLevel: RiskLevel;
   tokenAmounts: {
     token: RespToken;
     percentage: number;

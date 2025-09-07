@@ -2,7 +2,8 @@ import { Pie } from "@nivo/pie";
 import { useState } from "react";
 import { TbSkull } from "react-icons/tb";
 import TinderCard from "react-tinder-card";
-import type { Bag, RiskLevel } from "../types";
+import type { RespBag } from "../api/bags";
+import type { RiskLevel } from "../types";
 import cn from "../utils/classNamesHelper";
 
 export type SwipeDirection = "left" | "right";
@@ -28,7 +29,7 @@ const RISK_LEVEL_LABELS: Record<RiskLevel, string> = {
 };
 
 interface Props {
-  bag: Bag;
+  bag: RespBag;
   onSwipe: (direction: SwipeDirection) => void;
   onCardLeftScreen: (direction: SwipeDirection) => void;
 }
@@ -82,7 +83,7 @@ export function BagCard({ bag, onSwipe, onCardLeftScreen }: Props) {
   );
 }
 
-function BagCardSummaryPage({ bag }: { bag: Bag }) {
+function BagCardSummaryPage({ bag }: { bag: RespBag }) {
   return (
     <div>
       <h1 className="text-2xl font-semibold">{bag.name}</h1>
@@ -91,13 +92,13 @@ function BagCardSummaryPage({ bag }: { bag: Bag }) {
   );
 }
 
-function BagCardTokensPage({ bag }: { bag: Bag }) {
+function BagCardTokensPage({ bag }: { bag: RespBag }) {
   return (
     <div className="flex justify-center">
       <Pie
         data={bag.tokenAmounts.map((tokenAmount) => ({
           id: tokenAmount.token.name,
-          value: tokenAmount.amount,
+          value: tokenAmount.percentage,
           color: tokenAmount.token.color,
         }))}
         valueFormat={">-~p"}
@@ -135,7 +136,7 @@ function BagCardTokensPage({ bag }: { bag: Bag }) {
   );
 }
 
-function BagCardAnalysisPage({ bag }: { bag: Bag }) {
+function BagCardAnalysisPage({ bag }: { bag: RespBag }) {
   return (
     <div>
       <div className="flex items-end gap-4">

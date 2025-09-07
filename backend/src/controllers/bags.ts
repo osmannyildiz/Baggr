@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { nanoid } from "nanoid";
 import { db } from "../db";
 import { openai } from "../openai";
+import { RiskLevel } from "../types";
 import { DbBag, DbToken } from "../types/db";
 import { RespBag } from "../types/resp";
 import { learnToken } from "../utils";
@@ -23,7 +24,7 @@ export const getBags = async (req: Request, res: Response) => {
       name: dbBag.name,
       description: dbBag.description,
       imageUrl: dbBag.image_url,
-      riskLevel: dbBag.risk_level,
+      riskLevel: dbBag.risk_level as RiskLevel,
       tokenAmounts: dbTokens.map((dbToken) => ({
         token: {
           id: dbToken.id,
@@ -31,8 +32,9 @@ export const getBags = async (req: Request, res: Response) => {
           address: dbToken.address,
           name: dbToken.name,
           description: dbToken.description,
+          color: dbToken.color,
           imageUrl: dbToken.image_url,
-          riskLevel: dbToken.risk_level,
+          riskLevel: dbToken.risk_level as RiskLevel,
         },
         percentage: dbToken.percentage,
       })),
