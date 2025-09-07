@@ -1,3 +1,4 @@
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { TbShoppingBagPlus, TbSwipe, TbUser } from "react-icons/tb";
 
@@ -8,11 +9,13 @@ export const Route = createFileRoute("/_app")({
 function RouteComponent() {
   return (
     <div className="flex h-screen flex-col">
-      <header className="py-2">
+      <header className="flex items-center justify-between px-4 py-2">
         <div className="text-center text-3xl font-semibold">Baggr</div>
+
+        <ConnectButton />
       </header>
 
-      <main className="grow">
+      <main className="grow py-2">
         <Outlet />
       </main>
 

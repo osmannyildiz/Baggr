@@ -8,7 +8,7 @@ import { RespBag } from "../types/resp";
 import { learnToken } from "../utils";
 
 export const getBags = async (req: Request, res: Response) => {
-  const stmt1 = db.prepare("SELECT * FROM bags");
+  const stmt1 = db.prepare("SELECT * FROM bags ORDER BY rowid DESC");
   const dbBags = stmt1.all() as DbBag[];
 
   const bags: RespBag[] = dbBags.map((dbBag) => {
