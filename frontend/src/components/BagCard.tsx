@@ -51,7 +51,7 @@ export function BagCard({ bag, onSwipe, onCardLeftScreen }: Props) {
         style={{ background: `url('${bag.imageUrl}') #ddd` }}
       ></div>
 
-      <div className="absolute bottom-0 z-20 flex w-full flex-col bg-linear-to-b from-transparent to-black/80 p-4 pt-12 text-white">
+      <div className="absolute inset-0 z-20 flex w-full flex-col justify-end bg-linear-to-b from-transparent to-black p-4 text-white">
         {pageIndex === 0 && <BagCardSummaryPage bag={bag} />}
         {pageIndex === 1 && <BagCardTokensPage bag={bag} />}
         {pageIndex === 2 && <BagCardAnalysisPage bag={bag} />}
@@ -97,8 +97,8 @@ function BagCardTokensPage({ bag }: { bag: RespBag }) {
     <div className="flex justify-center">
       <Pie
         data={bag.tokenAmounts.map((tokenAmount) => ({
-          id: tokenAmount.token.name,
-          value: tokenAmount.percentage,
+          id: tokenAmount.token.symbol,
+          value: tokenAmount.percentage / 100,
           color: tokenAmount.token.color,
         }))}
         valueFormat={">-~p"}

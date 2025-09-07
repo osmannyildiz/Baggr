@@ -3,7 +3,6 @@ export interface DbToken {
   id: string;
   symbol: string;
   address: string;
-  name: string;
   description: string;
   color: string;
   image_url: string;

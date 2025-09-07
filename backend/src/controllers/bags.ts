@@ -30,7 +30,6 @@ export const getBags = async (req: Request, res: Response) => {
           id: dbToken.id,
           symbol: dbToken.symbol,
           address: dbToken.address,
-          name: dbToken.name,
           description: dbToken.description,
           color: dbToken.color,
           imageUrl: dbToken.image_url,

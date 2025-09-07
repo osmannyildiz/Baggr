@@ -34,7 +34,7 @@ export function useBagsQuery() {
     queryKey: ["bags"],
     queryFn: async () => {
       const resp = await fetch(`${API_URL}/bags`);
-      const respData = (await resp.json()) as RespBag[];
+      const respData = (await resp.json()) as { data: RespBag[] };
       return respData;
     },
   });
@@ -45,7 +45,7 @@ export function useBagQuery(id: string) {
     queryKey: ["bags", id],
     queryFn: async () => {
       const resp = await fetch(`${API_URL}/bags/${id}`);
-      const respData = (await resp.json()) as RespBag;
+      const respData = (await resp.json()) as { data: RespBag };
       return respData;
     },
   });

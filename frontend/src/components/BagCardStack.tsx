@@ -15,14 +15,23 @@ export function BagCardStack({ bags, onSwipe, onCardLeftScreen }: Props) {
         <TbDeviceUnknown size={128} />
       </div>
 
-      {bags.map((bag) => (
-        <BagCard
-          key={bag.id}
-          bag={bag}
-          onSwipe={(direction) => onSwipe(bag.id, direction)}
-          onCardLeftScreen={(direction) => onCardLeftScreen(bag.id, direction)}
-        />
-      ))}
+      <div className="relative h-full">
+        {bags.map((bag, index) => (
+          <div
+            key={bag.id}
+            className="absolute inset-0"
+            style={{ zIndex: bags.length - index }}
+          >
+            <BagCard
+              bag={bag}
+              onSwipe={(direction) => onSwipe(bag.id, direction)}
+              onCardLeftScreen={(direction) =>
+                onCardLeftScreen(bag.id, direction)
+              }
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

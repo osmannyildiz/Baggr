@@ -23,7 +23,7 @@ function RouteComponent() {
     const symbol5 = formData.get("symbol5") as string;
     const percentage5 = Number(formData.get("percentage5") as string);
 
-    createBagMutation.mutate({
+    await createBagMutation.mutateAsync({
       symbol1,
       percentage1,
       symbol2,
