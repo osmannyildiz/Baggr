@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "9.5.5",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-router": "^1.131.35",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",
+    "react-tinder-card": "^1.6.4",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.13"
   },
