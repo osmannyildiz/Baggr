@@ -1,12 +1,31 @@
 import { Pie } from "@nivo/pie";
 import { useState } from "react";
+import { TbSkull } from "react-icons/tb";
 import TinderCard from "react-tinder-card";
-import type { Bag } from "../types";
+import type { Bag, RiskLevel } from "../types";
 import cn from "../utils/classNamesHelper";
 
 export type SwipeDirection = "left" | "right";
 
 const MAX_PAGE_INDEX = 2;
+
+const RISK_LEVEL_COLORS: Record<RiskLevel, string> = {
+  low: "var(--color-green-700)",
+  medium: "var(--color-yellow-700)",
+  high: "var(--color-red-700)",
+};
+
+const RISK_LEVEL_ICONS: Record<RiskLevel, React.ReactNode> = {
+  low: <TbSkull size={48} />,
+  medium: <TbSkull size={48} />,
+  high: <TbSkull size={48} />,
+};
+
+const RISK_LEVEL_LABELS: Record<RiskLevel, string> = {
+  low: "Low",
+  medium: "Medium",
+  high: "High",
+};
 
 interface Props {
   bag: Bag;
@@ -34,7 +53,7 @@ export function BagCard({ bag, onSwipe, onCardLeftScreen }: Props) {
       <div className="absolute bottom-0 z-20 flex w-full flex-col bg-linear-to-b from-transparent to-black/80 p-4 pt-12 text-white">
         {pageIndex === 0 && <BagCardSummaryPage bag={bag} />}
         {pageIndex === 1 && <BagCardTokensPage bag={bag} />}
-        {pageIndex === 2 && <BagCardAnalysisPage />}
+        {pageIndex === 2 && <BagCardAnalysisPage bag={bag} />}
 
         <div className="mt-4 flex justify-center gap-2">
           {Array.from({ length: MAX_PAGE_INDEX + 1 }).map((_, index) => (
@@ -116,6 +135,23 @@ function BagCardTokensPage({ bag }: { bag: Bag }) {
   );
 }
 
-function BagCardAnalysisPage() {
-  return <div>Analysis</div>;
+function BagCardAnalysisPage({ bag }: { bag: Bag }) {
+  return (
+    <div>
+      <div className="flex items-end gap-4">
+        <div
+          className="flex h-[64px] w-[64px] items-center justify-center rounded-full"
+          style={{ backgroundColor: RISK_LEVEL_COLORS[bag.riskLevel] }}
+        >
+          {RISK_LEVEL_ICONS[bag.riskLevel]}
+        </div>
+        <div>
+          <div className="text-sm">Risk Level</div>
+          <div className="text-2xl font-semibold">
+            {RISK_LEVEL_LABELS[bag.riskLevel]}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

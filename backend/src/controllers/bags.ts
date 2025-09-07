@@ -22,8 +22,8 @@ export const getBags = async (req: Request, res: Response) => {
       id: dbBag.id,
       name: dbBag.name,
       description: dbBag.description,
-      image_url: dbBag.image_url,
-      risk_level: dbBag.risk_level,
+      imageUrl: dbBag.image_url,
+      riskLevel: dbBag.risk_level,
       tokenAmounts: dbTokens.map((dbToken) => ({
         token: {
           id: dbToken.id,
@@ -31,8 +31,8 @@ export const getBags = async (req: Request, res: Response) => {
           address: dbToken.address,
           name: dbToken.name,
           description: dbToken.description,
-          image_url: dbToken.image_url,
-          risk_level: dbToken.risk_level,
+          imageUrl: dbToken.image_url,
+          riskLevel: dbToken.risk_level,
         },
         percentage: dbToken.percentage,
       })),

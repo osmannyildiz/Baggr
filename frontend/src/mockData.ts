@@ -3,7 +3,7 @@ import type { Bag } from "./types";
 export const BAGS: Bag[] = [
   {
     id: "1",
-    name: "Example Bag",
+    name: "Example Bag 1",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima explicabo dolore provident eum delectus.",
     imageUrl: "https://picsum.photos/id/1/800",
@@ -17,5 +17,6 @@ export const BAGS: Bag[] = [
         token: { id: "2", name: "Token 2", color: "#00ff00" },
       },
     ],
+    riskLevel: "high",
   },
 ];

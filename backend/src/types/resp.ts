@@ -4,16 +4,16 @@ export interface RespToken {
   address: string;
   name: string;
   description: string;
-  image_url: string;
-  risk_level: string;
+  imageUrl: string;
+  riskLevel: string;
 }
 
 export interface RespBag {
   id: string;
   name: string;
   description: string;
-  image_url: string;
-  risk_level: string;
+  imageUrl: string;
+  riskLevel: string;
   tokenAmounts: {
     token: RespToken;
     percentage: number;

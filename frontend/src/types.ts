@@ -4,6 +4,7 @@ export interface Bag {
   description: string;
   imageUrl: string;
   tokenAmounts: { amount: number; token: Token }[];
+  riskLevel: RiskLevel;
 }
 
 export interface Token {
@@ -11,3 +12,5 @@ export interface Token {
   name: string;
   color: string;
 }
+
+export type RiskLevel = "low" | "medium" | "high";
